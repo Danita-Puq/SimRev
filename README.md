@@ -16,11 +16,13 @@ El proyecto busca aprovechar las capacidades de **OPM Flow** (Open Porous Media)
   Documento de formulación del proyecto de investigación, incluyendo estado del arte, objetivos, metodología y plan de trabajo.
 
 - **Manual de tutorías – OPM Flow**  
-  Guía práctica orientada a estudiantes y profesionales para iniciarse en la simulación de reservorios con OPM Flow y ResInsight. Incluye:
+  Guía práctica orientada a estudiantes y profesionales para iniciarse en la simulación de reservorios con OPM Flow y ResInsight.
+  Incluye:
   - Introducción a OPM Flow y ResInsight
   - Estructura de archivos `.DATA` y palabras clave
   - Casos de estudio (flujo bifásico, trifásico, tight gas, almacenamiento de CO₂)
   - Ejercicios prácticos y desafíos para reforzar el aprendizaje
+  Para acceder haz clic [AQUÍ](Manual_de_tutorias_OPM_Flow_UMAG.pdf)
 
 - **Archivos `.DATA` de las tutorías**  
   Los siguientes archivos contienen los casos prácticos utilizados en el manual.  
