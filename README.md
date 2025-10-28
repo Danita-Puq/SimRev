@@ -13,9 +13,6 @@ El proyecto busca aprovechar las capacidades de **OPM Flow** (Open Porous Media)
 
 ## 📄 Contenido del repositorio
 
-- **Proyecto_SimRev.NavarroPerez_Daniela.pdf**  
-  Documento de formulación del proyecto: estado del arte, objetivos, metodología y plan de trabajo.
-
 - **Manual de tutorías – OPM Flow**  
   Guía práctica orientada a estudiantes y profesionales para iniciarse en la simulación de reservorios con OPM Flow y ResInsight.
 
