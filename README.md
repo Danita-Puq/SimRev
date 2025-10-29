@@ -29,6 +29,7 @@ El proyecto busca aprovechar las capacidades de **OPM Flow** (Open Porous Media)
   Cada tutoría incluye dos archivos:
   - El archivo de simulación (.DATA)
   - El archivo de resultados (.RSM), generado por OPM Flow
+
 Ambos se encuentran en la subcarpeta [`tutorias/`](tutorias/).
 
 
