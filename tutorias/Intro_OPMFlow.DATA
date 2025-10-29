@@ -1,0 +1,154 @@
+RUNSPEC
+-- NOSIM
+DIMENS
+	4	4	3/
+OIL
+WATER
+
+FIELD
+ START
+	1 JAN 2001/
+EQLDIMS
+--	nteql	nprsvd	ndrxv	nttrvd	nstrvd
+	1	100	100	1	20 /
+TABDIMS
+	1	1	94	20	1	20 /
+--
+WELLDIMS
+-- 1 WELL, MAX NUMBER OF GRID BLOCK CONNECTIONS PER WELL = NZ
+	2	3	1	2 /
+
+UNIFOUT
+
+GRID
+INIT
+DX
+   48*500.0 /
+
+DY
+   48*500.0 /
+
+DZ
+   48*25.0 /
+TOPS
+   16*4500.0 /
+PERMX
+   48*100.0 /
+
+PERMY
+   48*100.0 /
+  
+PERMZ
+   48*100.0 /
+
+ PORO
+ 48*0.25 /
+PROPS
+ROCK
+-- 
+-- Rock Properties
+-- 	p.ref	compresibilidad
+       4500.0         .30E-05 /
+SWOF
+--         Sw            Krw         Kro         Pc
+-- Water / oil saturation functions versus water saturation
+-- 
+           0.24          0            0.84        4.1
+           0.48          0.21         0.32        1.6
+           0.72          0.42         0.16        0.8
+           0.86          0.58          0          0.2
+             1           1             0           0
+/
+
+--PVTW: Water PVT functions
+--   REF PRES   REF FVF   COMPRESSIBILITY  REF VISCOSITY  VISCOSIBILITY
+--    (psia)    (rb/stb)     (1/psi)          (cp)            (1/psi)
+PVTW
+        .0        1.0       3.01E-06           .5             0.0 /
+
+		
+-- PVDO: PVT properties of dead oil (no dissolved gas)
+-- Po      Bo    oil viscosity
+PVDO
+  .0      1.0     2.1
+ 7000.0   .92     2.1
+/
+DENSITY
+   52.0       64.0        0.0440 /
+SOLUTION
+EQUIL
+--	prof.	press.	contacto  	
+--			gasagua	 
+    4500       4600      4800     0       0   0   0   0   0  /
+
+ RPTRST
+	BASIC=2 / 
+SUMMARY
+
+RUNSUM
+FPR
+FOPR
+FWPR
+FOPT
+FWPT
+FLPT
+/
+
+WBHP
+/
+
+WOPR
+PROD
+/
+
+WOPT
+PROD
+/
+
+WWCT
+PROD
+/
+
+WWIT
+INJ
+/
+
+
+/
+
+SCHEDULE
+
+-- RPTRST
+--	BASIC=2 /
+WELSPECS
+--	name	group	I	J	depth	fase	radio	inflow	cerrado		flujo		pvt	dens	
+--							drenaje		emergencia	cruzado		table	
+	INJ	G1	1	1	4500	WAT	1*	STD	SHUT		YES		1*	SEG	/
+	PROD	G1	4	4	4500	OIL	1*	STD	SHUT		YES		1*	SEG	/
+/
+--      Well   Location  Interval  Status           Well
+--      name    I    J    K1  K2   O or S            ID
+--      ----    -    -    --  --   ------          --??----
+-- WELL GRID CONNECTION
+COMPDAT
+--	pozo	I	J	K1	K2	Estado	tabla sat	transm	d.pozo	Kh	SKIN	DFACt	DIRECT
+	INJ	1	1	1	3	OPEN	2*			1	3*			Z /
+	PROD	4	4	1	3	OPEN	2*			1	3*			Z /
+/
+  
+--/  
+-- Injection control
+--  Well	Fluid	Status	TARGET	FLUJO	FLUJO VOL.	BHP	THP
+--  NAME	TYPE         		MAX. 	TARGET 	   	TARGET	TARGET 
+--  ----  -----  ------  -------   ----   ----  ---- ----  -----
+WCONINJE
+    INJ		WAT	OPEN	RATE	1000	1*		1*	1* /
+ /
+WCONPROD
+	PROD 	OPEN 	ORAT 	1500	1*	1*	1*	1*	1* /
+
+/
+TSTEP
+	10*50
+/
+END

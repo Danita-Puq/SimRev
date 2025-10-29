@@ -1,0 +1,283 @@
+
+
+-- ENG -- Base case for CO2 injection in saline aquifer
+-- ESP -- Caso base para la inyección de CO2 en acuíferos salinos
+----------------------------------------------------------------------------------------------------------------------------------------
+RUNSPEC
+----------------------------------------------------------------------------------------------------------------------------------------
+-- ENG -- The NOSIM keyword can be used to check input data, turns off the simulation and only runs the data check before the simulation
+-- ESP -- La keyword NOSIM se puede utilizar para revisar que todos los datos necesarios hayan sido ingresados, al activarla, la simulación no se realiza y solo se revisan los datos antes de la simulación
+-- NOSIM
+TITLE
+	Simulacion acuifeross
+	
+-- ENG -- number of grid blocks (or cells) in each direction
+-- ESP -- numero de bloques de la grilla (o celdas) en cada direccion
+DIMENS
+	25 25 10 /
+-- ENG -- Phases
+-- ESP -- Fases
+GAS
+WATER
+-- ENG -- The next 3 keywords can be added, DISGASW allows CO2 dissolution in brine, VAPWAT enables water presence in the gas phase and DIFFUSE activates CO2 diffusion calculation
+-- ESP -- Las siguientes 3 keywords pueden añadirse, DISGASW activa la disolucion de CO2 en la salmuera, VAPWAT activa la presencia de agua en la fase gaseosa y DIFFUSE activa el calculo de la difusión de CO2
+DISGASW
+VAPWAT
+DIFFUSE
+-- ENG -- CO2STORE activates CO2-Brine PVT model, GAS phase is interpreted as CO2 and the WATER phase as brine
+-- ESP -- CO2STORE activa el modelo CO2-Brine PVT, este modelo interpreta la fase GAS como CO2 y la fase WATER como la salmuera
+CO2STORE
+-- ENG -- System of units
+-- ESP -- Sistema de unidades
+FIELD
+
+-- ENG -- This keyword unifies the output data into a single file
+-- ESP -- Esta keyword unifica los datos de salida en un solo archivo
+UNIFOUT
+
+-- ENG -- Starting date
+-- ESP -- fecha de inicio
+START
+	1 JAN 2001/
+-- ENG -- EQLDIMS can be defaulted for this case due to its simplicity, all values defined are the default values
+-- ESP -- EQLDIMS puede dejarse con los datos predeterminados debido a la simplicidad del caso, todos los valores definidos son los valores predeterminados
+EQLDIMS
+--	nteql	nprsvd	ndrxv	nttrvd	nstrvd
+	1	100	100	1	20 /
+-- ENG -- TABDIMS define the number of tables for each property and max number of entries per table
+-- ESP -- TABDIMS define el numero de tablas para cada propiedad y el numero maximo de entradas por tabla
+TABDIMS
+--	NTSFUN	NTPVT	NSSFUN	NPPVT	NTFIP	NRPVT
+	1	1	94	20	1	20	/
+-- ENG -- WELLDIMS defines the well dimensions
+-- ESP -- WELLDIMS define las dimensiones del pozo
+WELLDIMS
+-- ENG -- One well; the maximum number of grid block connections per well is NZ.
+-- ESP -- Un solo pozo, el numero maximo de celdas conectadas por pozo es NZ.
+	1	10	1	1 /
+
+----------------------------------------------------------------------------------------------------------------------------------------
+GRID
+----------------------------------------------------------------------------------------------------------------------------------------
+INIT
+-------------------------------------------------------------------------------
+GRIDUNIT
+-- 
+-- ENG -- Grid data units, FIELD keyword add field units, so maybe is redundant, but default unit is METRES
+-- ESP -- sistema de unidades de los datos de la grilla. La keyword FIELD ya añade las unidades inglesas, por lo que puede ser redundante, sin embargo, la unidad predeterminada de la keywrod GRIDUNIT es METRES, por lo que se definió como FEET para que haya una congruencia con el sistema de unidades seleccionado.
+ 'FEET'  /
+-----------------------------------------------------------------------------------------
+-- ENG -- Sizes of each cell
+-- ESP -- Dimensiones de cada celda
+DX
+6250*500 
+/
+DY
+6250*500
+/
+DZ
+6250*50 
+/
+-----------------------------------------------------------------------------------------
+-- ENG -- TOPS defines the depth of each cell, if only the top layer is defined, the program will calculate the remaining TOPS
+-- ESP -- TOPS define la profundidad de cada celda, si 
+TOPS
+-- ENG -- DEPTH 1650 m OR 5413 ft
+-- ESP -- Profundidad 1650 metros o 5413 pies.
+	625*5413 
+/
+-- ENG -- using equals keyword simplifies the sensitivity analysis
+-- ESP --  Usar la keyword EQUALS simplifica el analisis de sensibilidad
+EQUALS
+	PERMX 7.5 /
+	PERMY 7.5 /
+	PERMZ 7.5 /
+	PORO 0.244 /
+/
+----------------------------------------------------------------------------------------------------------------------------------------
+PROPS
+----------------------------------------------------------------------------------------------------------------------------------------
+-- ENG -- Temperatures for CO2-brine systems varies from 25 to 100 C or 77 to 212 F
+-- ESP -- la temperatura en sistemas CO2-Brine varia entre 25-100 Celsius, o 77-212 Farenheit
+RTEMP
+-- ENG -- reservoir temperature from White et al 96.6 at 3918 ft KB, and 6.72e-3 F/ft gradient. Then, at 5413 ft, reservoir temperature would be 106.64 F
+-- ESP -- temperatura del reservorio extraida de White et al 96.6 a una profundidad de 3918 ft KB, y un gradiente de temperatura/profundidad 6.72e-3 F/ft. Luego, a 5413 pies, la temperatura del reservorio es de 106.64 F.
+	 106.64 /
+ROCK
+-- 
+-- Rock Properties, Krevor et al.
+-- 	p.ref	compressibility
+        2618  2.56e-006                                        
+/
+SGWFN
+-- ENG -- KEYWORD FOR GAS-WATER SYSTEM, IN THIS CASE, GAS IS CO2, DATA FROM KREVOR ET AL.
+-- ESP -- keyword para sistemas gas-agua, en este caso, el gas es CO2, datos de Krevor et al.
+-- Gas-Water Saturation Functions
+-- SG	krg	krw	presion capilar
+-- FRAC			psia
+0	0.000	1.000	0.67
+0.05	0.000	0.551	0.75
+0.1	0.002	0.291	0.86
+0.15	0.005	0.146	0.98
+0.2	0.010	0.070	1.14
+0.25	0.018	0.031	1.35
+0.3	0.028	0.013	1.61
+0.35	0.040	0.005	1.97
+0.4	0.055	0.002	2.47
+0.45	0.071	0.000	3.19
+0.5	0.089	0.000	4.30
+0.55	0.109	0.000	6.15
+0.6	0.130	0.000	9.60
+0.65	0.153	0.000	17.34
+0.7	0.177	0.000	41.92
+0.75	0.203	0.000	249.41	/ Mt. Simon table
+SALINITY
+-- 
+	0.8128 /
+	
+----------------------------------------------------------------------------------------------------------------------------------------
+SOLUTION
+----------------------------------------------------------------------------------------------------------------------------------------
+EQUIL
+-- 
+-- Equilibration Data Specification
+--	depth	press.	contact  pres	gas	gas	
+--	ref.		gaswater cap.	cont	cap
+	5413    2618    5000      1*    1*      1*      1*      1*      1*      1*    1* /
+----------------------------------------------------------------------
+-- ENG -- CO2 critical point: 304 K and 73.8 bar, 87.53 F and 1070.379 psia
+-- ENG -- Saline Aquifer pressure varies from 90 bar to 300 bar, 1305 to 4351 psia
+-- ESP -- punto critico del CO2: 304 K y 73.8 bar o tambien 87.53 F y 1070.379 psia
+-- ESP -- La presion de los acuiferos salinos varia desde 90 bar hasta 300 bar, o 1305 a 4351 psia.
+--------------------------------------------------------------------
+RPTRST
+-- 
+-- Restart File Output Control
+-- 
+'BASIC=2' /
+----------------------------------------------------------------------------------------------------------------------------------------
+SUMMARY
+----------------------------------------------------------------------------------------------------------------------------------------
+RUNSUM
+-- ENG -- Average pressure
+-- ESP -- Presion promedio
+FPR
+-- ENG -- Well bottom hole pressure
+-- ESP -- presion de fondo de pozo
+WBHP
+'INJ' /
+-- ENG -- Well gas injection rate
+-- ESP -- tasa de inyección de gas del pozo
+WGIR
+'INJ' /
+-- ENG -- Well gas injection total
+-- ESP -- inyeccion total de gas del pozo
+WGIT
+'INJ' /
+-- ENG -- Simulation time
+-- ESP -- tiempo de simulacion
+TCPU
+-- ENG -- Field gas saturation
+-- ESP -- saturacion de gas del campo petrolifero
+FGSAT
+-- ENG -- Field water saturation
+-- ESP -- saturacion de agua del campo petrolifero
+FWSAT
+-- ENG -- field water in place
+-- ESP -- agua total en el campo petrolifero
+FWIP
+-- ENG -- field water in place reservoir conditions
+-- ESP -- agua total en el campo petrolifero a condiciones del reservorio
+FWIPR
+-------------------------------------
+-- ENG -- Variables from CO2STORE model
+-- ESP -- variables propias del modelo CO2STORE 
+-------------------------------------
+-- ENG -- CO2 immobile in the gas phase (moles)
+-- ESP -- CO2 inmovil en la fase gaseosa (en moles)
+FGCDI
+-- ENG -- CO2 Mobile in the gas phase (moles)
+-- ESP -- CO2 movil en la fase gaseosa (moles)
+FGCDM
+-- ENG -- CO2 Immobile in the gas phase (Non-wetting relative permeability equals zero) (moles)
+-- ESP -- CO2 inmovil en la fase gaseosa (la permeabilidad relativa de la fase no mojante es igual a cero) (moles)
+FGKDI
+-- ENG -- CO2 Mobile in the gas phase (Non-wetting relative permeability greater than zero) (moles)
+-- ESP -- CO2 movil en la fase gaseosa (la permeabilidad relativa de la fase no mojante es igual a cero) (moles)
+FGKDM
+-- ENG -- CO2 Dissolved in the water phase (moles)
+-- ESP -- CO2 disuelto en la fase gaseosa (moles)
+FWCD
+-- ENG -- CO2 Immobile in the gas phase (mass)
+-- ESP -- CO2 inmovil en la fase gaseosa (masa)
+FGMTR
+-- ENG -- CO2 mobile in the gas phase (mass)
+-- ESP -- CO2 movil en la fase gaseosa (masa)
+FGMMO
+-- ENG -- CO2 Immobile in the gas phase (Non-wetting relative permeability equals zero) (mass)
+-- ESP -- CO2 inmovil en la fase gaseosa (la permeabilidad relativa de la fase no mojante es igual a cero) (masa)
+FGKTR
+-- ENG -- CO2 Mobile in the gas phase (Non-wetting relative permeability greater than zero) (mass)
+-- ESP -- CO2 movil en la fase gaseosa (la permeabilidad relativa de la fase no mojante es igual a cero) (masa)
+FGKMO
+-- ENG -- Water in the gas phase (volume)
+-- ESP -- agua en la fase gaseosa (volumen)
+FWIPG
+-- ENG -- Water in the water phase (volume)
+-- ESP -- agua en la fase gaeosa (volumen)
+FWIPL
+/
+----------------------------------------------------------------------------------------------------------------------------------------
+SCHEDULE
+----------------------------------------------------------------------------------------------------------------------------------------
+RPTRST
+BASIC=2            /
+
+WELSPECS
+-- ENG -- the injection well is placed at the center of the grid
+-- ESP -- el pozo de inyeccion esta ubicado al centro de la grilla
+--	name	group	I	J	depth	fase	radio	inflow	cerrado		flujo		pvt	dens	
+--					inj		drenaje		emergencia	cruzado		table	
+	INJ	G2	13	13	5575	GAS	1*	STD	SHUT		YES		1*	SEG	/
+/
+--      Well   Location  Interval  Status           Well
+--      name    I    J    K1  K2   O or S            ID
+--      ----    -    -    --  --   ------          --??----
+-- ENG -- WELL GRID CONNECTION
+-- ESP -- Conexion del pozo con la grilla
+COMPDAT
+--	pozo	I	J	K1	K2	Estado	tabla sat	transm	d.pozo	Kh	SKIN	DFACt	DIRECT
+	INJ	13	13	6	10	OPEN	2*			0.66	3*			Z /
+/
+  
+--/  
+-- ENG -- Injection control
+-- ESP -- control de inyeccion
+--  Well	Fluid	Status	TARGET	FLUJO	FLUJO VOL.	BHP	THP
+--  NAME	TYPE         		MAX. 	TARGET 	   	TARGET	TARGET 
+--  ----  -----  ------  -------   ----   ----  ---- ----  -----
+WCONINJE
+-- ENG -- controlled by bottom hole pressure with target of 6000 psia, injection rate varies so pressure does not exceed the max bhp
+-- ESP -- controlado por la presion de fondo de pozo con un limite de 6000 psia, el flujo de inyeccion varia de manera que la presion nunca excede el maximo establecido
+    INJ		GAS	OPEN	BHP	1*	1*		6000	1* /
+ /
+-- 
+TSTEP
+-- ENG -- 120 years of simulation, 20 of injection, 100 of CO2 distribution
+-- ESP -- 120 años de simulacion, 20 de inyeccion junto a 100 de distribucion del CO2
+-- ENG -- first number defines number of time steps, second number defines time steps size in days, in this case, 61*120 is equal to 20 years
+-- ESP -- el primer numero define el numero de pasos de tiempo, el segundo numero deifne el tamaño del salto de tiempo, en dias. En este caso, 61*120 equivale a 20 años
+	61*120
+/
+WCONINJE
+-- ENG -- after the 20 years of simulation, this change in WCONINJE is applied, and injection well is shut off
+-- ESP -- despues de los 20 años de inyeccion, se aplica este cambio en WCONINJE, de esta manera el pozo de inyección se cierra.
+    INJ		GAS	SHUT	BHP	1*	1*		6000	1* /
+ /
+TSTEP
+-- ENG -- 100 years
+-- ESP -- 100 años
+	304*120
+/
+END
+

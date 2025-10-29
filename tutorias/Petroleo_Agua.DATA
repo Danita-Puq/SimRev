@@ -1,0 +1,172 @@
+RUNSPEC
+TITLE
+ OIL WATER SIMULATION
+ ---- DIMENS: No of cells in the grid: 
+--  NX   NY   NZ
+DIMENS
+    5    5    1  /
+
+OIL
+
+WATER
+
+-- FIELD UNITS
+FIELD
+
+--TABDIMS: Table dimensions
+TABDIMS
+    1    1   20    2    1   20 /
+
+--Well dimension data:
+-- 2: Max no of wells in simulation;  
+-- 1: the maximum number of grid blocks connected to any one well; 
+-- 1: The maximum number of groups in the model; 
+-- 2: The maximum number of wells in any one group.
+--
+WELLDIMS
+    2    1    1    2 /
+
+START
+   1 'JAN' 2018  /
+
+UNIFOUT
+
+GRID      ==============================================================
+INIT
+
+-- Size of each cell in X, Y and Z directions
+DX
+   25*75.0 /
+
+DY
+   25*75.0 /
+
+DZ
+   25*30.0 /
+
+--'TOPS': Depths of the top face of each grid block in top layer
+TOPS
+   25*4000.0 /
+
+-- Permeability in X, Y and Z directions for each cell
+PERMX
+   25*50.00 /
+
+PERMY
+   25*50.0 /  
+  
+PERMZ
+   25*50.0 /
+
+PORO
+   25*0.2 /
+
+PROPS     ==============================================================
+
+SWOF
+--         Sw            Krw         Kro         Pc
+-- Water / oil saturation functions versus water saturation
+-- 
+           0.22          0           0.85        4.0
+           0.45          0.2         0.35        1.5
+           0.65          0.4         0.1         0.6
+           0.85          0.55          0         0.1
+             1           1             0           0
+/
+
+--PVTW: Water PVT functions
+--   REF PRES   REF FVF   COMPRESSIBILITY  REF VISCOSITY  VISCOSIBILITY
+--    (psia)    (rb/stb)     (1/psi)          (cp)            (1/psi)
+PVTW
+        .0        1.0       3.03E-06           .5             0.0 /
+	
+-- PVDO: PVT properties of dead oil (no dissolved gas)
+-- Po      Bo    oil viscosity
+PVDO
+  .0      1.0     2.0
+ 8000.0   .92     2.0
+/
+
+-- ROCK: Rock compressibility
+-- Pref       Rock compressibility 
+ROCK
+ 4000.0         .30E-05 /
+ 
+-- DENSITY: Fluid densities (RHO) at surface conditions:
+-- OIL        WATER       GAS
+DENSITY
+   52.0000    64.0000    .04400 /
+
+REGIONS    =============================================================
+--SATNUM: Saturation function region numbers
+SATNUM
+ 25*1 /
+
+SOLUTION   =============================================================
+--EQUIL: Equilibration data specification
+--Datum depth  P_datum    WOC    Pc@WOC 
+EQUIL
+     4000       4000     4200     0       0   0   0   0   0  /
+   
+-- Output to Restart file for t=0 (.UNRST)
+--     Restart file       Graphics
+--     for init cond        only
+--     -------------      --------
+RPTRST
+         BASIC=2           NORST=1 /
+SUMMARY    ===========================================================
+RUNSUM
+BPR
+1 1 1
+/
+
+FOPR
+WBHP
+/
+FWCT
+FPR
+FWIR
+FOPT
+FWPT
+/
+SCHEDULE   ===========================================================
+
+-- Output to Restart file for t>0 (.UNRST)
+--     Restart file      Graphics
+--      every step         only
+--     ------------      --------
+RPTRST
+        BASIC=2          /
+ 
+--     WELSPECS: WELL SPECIFICATION DATA
+--     WELL   GROUP LOCATION  BHP    PI
+--     NAME   NAME    I  J   DEPTH  DEFN
+WELSPECS
+       'I1'    'G'    1  1   4000   'WAT'  /
+       'P'     'G'    5  5   4000   'OIL'  /
+/
+-- 'COMPDAT': COMPLETION SPECIFICATION DATA
+--     WELL       LOCATION      OPEN/  SAT   CONN   WELL
+--     NAME     I  J    K1  K2  SHUT   TAB   FACT   DIAM
+COMPDAT
+       'I1'     1   1   1   1  'OPEN'   0     .0    1.0 /
+       'P'      5   5   1   1  'OPEN'   0     .0    1.0 /
+/
+-- WCONPROD: CONTROL DATA FOR PRODUCTION WELLS
+--      WELL     OPEN/   CNTL     OIL    WATER   GAS   LIQU    RES    BHP
+--      NAME     SHUT    MODE     RATE   RATE    RATE  RATE    RATE
+WCONPROD
+        'P'      'OPEN'   'BHP'   5*                                 3999.0 /
+/
+
+-- 'WCONINJE': CONTROL DATA FOR INJECTION WELLS
+--
+--      WELL     INJ    OPEN/   CNTL    FLOW
+--      NAME     TYPE   SHUT    MODE    RATE
+WCONINJE
+        'I1'    'WAT'  'OPEN'  'RATE'   200 /
+/
+TSTEP
+ 20*40
+/
+END
