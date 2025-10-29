@@ -22,7 +22,7 @@ El proyecto busca aprovechar las capacidades de **OPM Flow** (Open Porous Media)
   - Casos de estudio (flujo bifásico, trifásico, tight gas, almacenamiento de CO₂)
   - Ejercicios prácticos y desafíos para reforzar el aprendizaje
 
-  📘 [Descargar Manual de Tutorías OPM Flow UMAG](Manual_de_tutorias_OPM_Flow_UMAG.pdf)
+ 📘 [Descargar Manual de Tutorías OPM Flow UMAG](manual/Manual_de_tutorias_OPM_Flow_UMAG.pdf)
 
 - **Archivos `.DATA` de las tutorías**  
   Casos prácticos utilizados en el manual.  
