@@ -9,6 +9,18 @@ El proyecto busca aprovechar las capacidades de **OPM Flow** (Open Porous Media)
 - Producción de energía geotérmica
 - Aplicaciones educativas y de investigación reproducible
 
+
+## ✅ Requisitos (Software utilizado)
+
+Los tutoriales de este repositorio fueron desarrollados y probados con las siguientes versiones:
+
+| Software        | Versión utilizada |
+|-----------------|------------------|
+| **OPM Flow**    | 2024.04 |
+| **ResInsight**  | 2024.10 |
+
+> ⚠️ Si utilizas versiones diferentes, algunos resultados podrían variar.
+
 ---
 
 ## 📄 Contenido del repositorio
