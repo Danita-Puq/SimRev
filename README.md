@@ -16,8 +16,8 @@ Los tutoriales de este repositorio fueron desarrollados y probados con las sigui
 
 | Software        | Versión utilizada |
 |-----------------|------------------|
-| **OPM Flow**    | 2024.04 |
-| **ResInsight**  | 2024.10 |
+| **OPM Flow**    | 2024.10 |
+| **ResInsight**  | 2024.12.1 |
 
 > ⚠️ Si utilizas versiones diferentes, algunos resultados podrían variar.
 
