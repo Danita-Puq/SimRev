@@ -39,11 +39,11 @@ Los tutoriales incluidos en este repositorio fueron desarrollados y probados con
 - **Archivos `.DATA` y `.RSM` de las tutorías**  
   El repositorio incluye los archivos de entrada y resultados asociados a cada tutorial.  
 
-Cada caso cuenta con:
+  Cada caso cuenta con:
   - El archivo de simulación (.DATA)
   - El archivo de resultados (.RSM), generado por OPM Flow
 
-Ambos se encuentran en la subcarpeta [`tutorias/`](tutorias/).
+  Ambos se encuentran en la subcarpeta [`tutorias/`](tutorias/).
 
 
 | Nº Tutoría | Nombre de la Tutoría                                   | Archivo `.DATA`                                      | Resultados `.RSM`                                      |
