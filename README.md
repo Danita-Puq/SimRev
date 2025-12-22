@@ -28,7 +28,7 @@ Los tutoriales incluidos en este repositorio fueron desarrollados y probados con
 - **Manual de tutorías – OPM Flow**  
   Guía práctica orientada a estudiantes y profesionales para iniciarse en la simulación de reservorios con OPM Flow y ResInsight.
 
-  Incluye:
+  El manual incluye:
   - Introducción a OPM Flow y ResInsight
   - Estructura de archivos `.DATA` y palabras clave
   - Casos de estudio (flujo bifásico, trifásico, tight gas, almacenamiento de CO₂)
@@ -37,8 +37,9 @@ Los tutoriales incluidos en este repositorio fueron desarrollados y probados con
  📘 [Descargar Manual de Tutorías OPM Flow UMAG](manual/Manual_de_tutorias_OPM_Flow_UMAG.pdf)
 
 - **Archivos `.DATA` y `.RSM` de las tutorías**  
-  Casos prácticos utilizados en el manual.
-  Cada tutoría incluye dos archivos:
+  El repositorio incluye los archivos de entrada y resultados asociados a cada tutorial.  
+
+Cada caso cuenta con:
   - El archivo de simulación (.DATA)
   - El archivo de resultados (.RSM), generado por OPM Flow
 
