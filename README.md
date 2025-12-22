@@ -49,10 +49,10 @@ Los tutoriales incluidos en este repositorio fueron desarrollados y probados con
 | Nº Tutoría | Nombre de la Tutoría                                   | Archivo `.DATA`                                      | Resultados `.RSM`                                      |
 |------------|--------------------------------------------------------|-------------------------------------------------------|---------------------------------------------------------|
 | 1          | Introducción a OPM Flow y ResInsight                    | [Intro_OPMFlow.DATA](tutorias/Intro_OPMFlow.DATA)     | [Intro_OPMFlow.RSM](tutorias/Intro_OPMFlow.RSM)         |
-| 2          | Simulación de Petróleo-Agua                             | [Petroleo_Agua.DATA](tutorias/Petroleo_Agua.DATA)     | [Petroleo_Agua.RSM](tutorias/Petroleo_Agua.RSM)         |
-| 3          | Simulación de Tres Fases                                | [Tres_Fases.DATA](tutorias/Tres_Fases.DATA)           | [Tres_Fases.RSM](tutorias/Tres_Fases.RSM)               |
-| 4          | Simulación de Reservorio Tight Gas                      | [Tight_Gas.DATA](tutorias/Tight_Gas.DATA)             | [Tight_Gas.RSM](tutorias/Tight_Gas.RSM)                 |
-| 5          | Simulación de Almacenamiento de CO₂                     | [CO2_Almacenamiento.DATA](tutorias/CO2_Almacenamiento.DATA) | [CO2_Almacenamiento.RSM](tutorias/CO2_Almacenamiento.RSM) |
+| 2          | Simulación de petróleo-agua                             | [Petroleo_Agua.DATA](tutorias/Petroleo_Agua.DATA)     | [Petroleo_Agua.RSM](tutorias/Petroleo_Agua.RSM)         |
+| 3          | Simulación de tres fases                                | [Tres_Fases.DATA](tutorias/Tres_Fases.DATA)           | [Tres_Fases.RSM](tutorias/Tres_Fases.RSM)               |
+| 4          | Simulación de reservorio tight gas                      | [Tight_Gas.DATA](tutorias/Tight_Gas.DATA)             | [Tight_Gas.RSM](tutorias/Tight_Gas.RSM)                 |
+| 5          | Simulación de almacenamiento de CO₂                     | [CO2_Almacenamiento.DATA](tutorias/CO2_Almacenamiento.DATA) | [CO2_Almacenamiento.RSM](tutorias/CO2_Almacenamiento.RSM) |
 
 ---
 
