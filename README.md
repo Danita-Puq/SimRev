@@ -34,7 +34,9 @@ Los tutoriales incluidos en este repositorio fueron desarrollados y probados con
   - Casos de estudio (flujo bifásico, trifásico, tight gas, almacenamiento de CO₂)
   - Ejercicios prácticos y desafíos para reforzar el aprendizaje
 
- 📘 [Descargar Manual de Tutorías OPM Flow UMAG](manual/Manual_de_tutorias_OPM_Flow_UMAG.pdf)
+ 📘 [Descargar Manual de Tutorías OPM Flow UMAG como PDF](manual/Manual_de_tutorias_OPM_Flow_UMAG.pdf)
+
+ 📘 [Descargar Manual de Tutorías OPM Flow UMAG como docx](manual/Manual_de_tutorias_OPM_Flow_UMAG_editable.docx)
 
 - **Archivos `.DATA` y `.RSM` de las tutorías**  
   El repositorio incluye los archivos de entrada y resultados asociados a cada tutorial.  
